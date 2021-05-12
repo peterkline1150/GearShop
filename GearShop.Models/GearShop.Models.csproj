@@ -54,13 +54,24 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="GearDetail.cs" />
-    <Compile Include="GearListItem.cs" />
+    <Compile Include="Category Models\CategoryCreate.cs" />
+    <Compile Include="Category Models\CategoryDetail.cs" />
+    <Compile Include="Category Models\CategoryEdit.cs" />
+    <Compile Include="Category Models\CategoryListItem.cs" />
+    <Compile Include="Gear Models\GearCreate.cs" />
+    <Compile Include="Gear Models\GearDetail.cs" />
+    <Compile Include="Gear Models\GearListItem.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />
     <None Include="packages.config" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\GearShop.Data\GearShop.Data.csproj">
+      <Project>{48fcd472-0df2-4d19-b4ce-e20e8e0fec2f}</Project>
+      <Name>GearShop.Data</Name>
+    </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>
