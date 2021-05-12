@@ -60,6 +60,7 @@
     <Compile Include="Category Models\CategoryListItem.cs" />
     <Compile Include="Gear Models\GearCreate.cs" />
     <Compile Include="Gear Models\GearDetail.cs" />
+    <Compile Include="Gear Models\GearEdit.cs" />
     <Compile Include="Gear Models\GearListItem.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>

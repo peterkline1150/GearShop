@@ -1,15 +1,16 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
-using System.ComponentModel.DataAnnotations.Schema;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
 namespace GearShop.Models.Gear_Models
 {
-    public class GearCreate
+    public class GearEdit
     {
+        public int GearId { get; set; }
+
         [Required]
         [Display(Name = "Name of Gear:")]
         public string Name { get; set; }

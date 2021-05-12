@@ -15,23 +15,26 @@ namespace GearShop.Models
 
         public string Name { get; set; }
 
+        public int NumAvailable { get; set; }
+
         [Display(Name = "This Gear is available on our site:")]
-        public bool IsAvailable { get; }
+        public bool IsAvailable {
+            get
+            {
+                return NumAvailable > 0;
+            }
+        }
 
         [Required]
         [Display(Name = "Price of item:")]
         public decimal Price { get; set; }
-
-        [ForeignKey(nameof(Category))]
-        public int CategoryId { get; set; }
 
         public virtual Category Category { get; set; }
 
         public virtual List<Comment> Comments { get; set; } = new List<Comment>();
 
         [Display(Name = "Gear Rating:")]
-        public double AverageRating
-        {
+        public double AverageRating {
             get
             {
                 double rating = 0;
