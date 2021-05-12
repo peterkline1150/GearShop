@@ -46,6 +46,7 @@ namespace GearShop.WebMVC.Controllers
         public ActionResult Details(int id)
         {
             var model = service.GetGearById(id);
+            TempData["GearIdForComment"] = model.GearId;
             return View(model);
         }
 
