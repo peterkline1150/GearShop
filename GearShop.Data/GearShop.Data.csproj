@@ -60,12 +60,29 @@
     <Compile Include="Gear.cs" />
     <Compile Include="IdentityModels.cs" />
     <Compile Include="IndividualGear.cs" />
+    <Compile Include="Migrations\202105121407067_InitialCreate.cs" />
+    <Compile Include="Migrations\202105121407067_InitialCreate.Designer.cs">
+      <DependentUpon>202105121407067_InitialCreate.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\202105122102444_FirstMigration.cs" />
+    <Compile Include="Migrations\202105122102444_FirstMigration.Designer.cs">
+      <DependentUpon>202105122102444_FirstMigration.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Reply.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />
     <None Include="packages.config" />
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="Migrations\202105121407067_InitialCreate.resx">
+      <DependentUpon>202105121407067_InitialCreate.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202105122102444_FirstMigration.resx">
+      <DependentUpon>202105122102444_FirstMigration.cs</DependentUpon>
+    </EmbeddedResource>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

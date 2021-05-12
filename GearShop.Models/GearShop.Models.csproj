@@ -58,6 +58,8 @@
     <Compile Include="Category Models\CategoryDetail.cs" />
     <Compile Include="Category Models\CategoryEdit.cs" />
     <Compile Include="Category Models\CategoryListItem.cs" />
+    <Compile Include="Comment Models\CommentCreate.cs" />
+    <Compile Include="Comment Models\CommentListItem.cs" />
     <Compile Include="Gear Models\GearCreate.cs" />
     <Compile Include="Gear Models\GearDetail.cs" />
     <Compile Include="Gear Models\GearEdit.cs" />

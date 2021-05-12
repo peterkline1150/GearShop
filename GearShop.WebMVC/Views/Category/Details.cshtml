@@ -18,6 +18,19 @@
             @Html.DisplayFor(model => model.CategoryName)
         </dd>
 
+        <dt>
+            @Html.DisplayNameFor(model => model.GearInCategory)
+        </dt>
+
+        @{ 
+            foreach (var gear in Model.GearInCategory)
+            {
+                <dd>
+                    <a href="@Url.Action("Details", "Gear", new { id = gear.GearId})" class="btn btn-primary">@gear.Name</a>
+                </dd>
+            }
+        }
+
     </dl>
 </div>
 <p>
