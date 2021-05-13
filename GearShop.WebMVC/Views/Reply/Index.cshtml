@@ -1,0 +1,39 @@
+﻿@model IEnumerable<GearShop.Models.Reply_Models.ReplyListItem>
+
+@{
+    ViewBag.Title = "Index";
+}
+
+<h2>Index</h2>
+
+<p>
+    @Html.ActionLink("Create New", "Create")
+</p>
+<table class="table">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.Comment)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.ReplyText)
+        </th>
+        <th></th>
+    </tr>
+
+@foreach (var item in Model) {
+    <tr>
+        <td>
+            @Html.DisplayFor(modelItem => item.Comment.CommentTitle)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.ReplyText)
+        </td>
+        <td>
+            @Html.ActionLink("Edit", "Edit", new { id=item.ReplyId }) |
+            @Html.ActionLink("Details", "Details", new { id=item.ReplyId }) |
+            @Html.ActionLink("Delete", "Delete", new { id=item.ReplyId })
+        </td>
+    </tr>
+}
+
+</table>
