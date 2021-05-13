@@ -52,6 +52,8 @@ namespace GearShop.WebMVC.Controllers
         {
             var service = CreateCommentService();
             var model = service.GetCommentById(id);
+            TempData["CommentToReplyTo"] = model;
+            TempData["CommentId"] = model.CommentId;
             return View(model);
         }
 

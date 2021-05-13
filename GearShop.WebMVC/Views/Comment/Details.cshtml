@@ -34,9 +34,23 @@
             @Html.DisplayFor(model => model.Rating)
         </dd>
 
+        <dt>
+            @Html.DisplayNameFor(model => model.Replies)
+        </dt>
+
+        @{ 
+            foreach (var reply in Model.Replies)
+            {
+                <dd>
+                    <p>@reply.ReplyText</p>
+                </dd>
+            }
+        }
+
     </dl>
 </div>
 <p>
+    <a href="@Url.Action("Create", "Reply")" class="btn btn-primary">Reply to this Comment</a>
     @Html.ActionLink("Edit", "Edit", new { id = Model.CommentId }) |
     @Html.ActionLink("Back to List", "Index")
 </p>
