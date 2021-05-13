@@ -24,6 +24,7 @@ namespace GearShop.Services
                 var entity = new Comment()
                 {
                     UserId = _userId,
+                    CommentTitle = model.Title,
                     CommentText = model.CommentText,
                     GearId = model.GearId,
                     Rating = model.Rating
@@ -47,6 +48,50 @@ namespace GearShop.Services
                     CommentTitle = e.CommentTitle
                 });
                 return query.ToArray();
+            }
+        }
+
+        public CommentDetail GetCommentById(int id)
+        {
+            using (var ctx = new ApplicationDbContext())
+            {
+                var entity = ctx.Comments.Single(e => e.CommentId == id && e.UserId == _userId);
+
+                return new CommentDetail()
+                {
+                    CommentId = entity.CommentId,
+                    CommentText = entity.CommentText,
+                    CommentTitle = entity.CommentTitle,
+                    Gear = entity.Gear,
+                    Rating = entity.Rating,
+                    Replies = entity.Replies,
+                    UserId = entity.UserId
+                };
+            }
+        }
+
+        public bool UpdateComment(CommentEdit model)
+        {
+            using (var ctx = new ApplicationDbContext())
+            {
+                var entity = ctx.Comments.Single(e => e.CommentId == model.CommentId && e.UserId == _userId);
+
+                entity.CommentTitle = model.CommentTitle;
+                entity.CommentText = model.CommentText;
+                entity.Rating = model.Rating;
+
+                return ctx.SaveChanges() == 1;
+            }
+        }
+
+        public bool DeleteComment(int id)
+        {
+            using (var ctx = new ApplicationDbContext())
+            {
+                var entity = ctx.Comments.Single(e => e.CommentId == id && e.UserId == _userId);
+
+                ctx.Comments.Remove(entity);
+                return ctx.SaveChanges() == 1;
             }
         }
     }
