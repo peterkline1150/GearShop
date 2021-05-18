@@ -22,7 +22,8 @@ namespace GearShop.Services
                     Price = e.Price,
                     Category = e.Category,
                     Comments = e.Comments,
-                    NumAvailable = e.NumAvailable
+                    NumAvailable = e.NumAvailable,
+                    PictureUrl = e.PictureUrl
                 });
 
                 return query.ToArray();
@@ -38,7 +39,8 @@ namespace GearShop.Services
                     Name = model.Name,
                     Price = model.Price,
                     NumAvailable = model.NumAvailable,
-                    CategoryId = model.CategoryId
+                    CategoryId = model.CategoryId,
+                    PictureUrl = model.PictureUrl
                 };
 
                 ctx.Gear.Add(entity);
@@ -59,7 +61,8 @@ namespace GearShop.Services
                     Price = entity.Price,
                     NumAvailable = entity.NumAvailable,
                     Category = entity.Category,
-                    Comments = entity.Comments
+                    Comments = entity.Comments,
+                    PictureUrl = entity.PictureUrl
                 };
             }
         }
@@ -74,6 +77,7 @@ namespace GearShop.Services
                 entity.Price = model.Price;
                 entity.NumAvailable = model.NumAvailable;
                 entity.CategoryId = model.CategoryId;
+                entity.PictureUrl = model.PictureUrl;
 
                 return ctx.SaveChanges() == 1;
             }

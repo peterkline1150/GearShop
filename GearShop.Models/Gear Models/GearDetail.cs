@@ -51,5 +51,11 @@ namespace GearShop.Models
                 return Math.Round(rating / Comments.Count, 1);
             }
         }
+
+        [Required]
+        [Display(Name = "How many would you like to purchase?")]
+        public int NumberOfGearInCart { get; set; }
+
+        public string PictureUrl { get; set; }
     }
 }

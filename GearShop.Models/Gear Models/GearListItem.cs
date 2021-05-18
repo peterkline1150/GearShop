@@ -47,5 +47,7 @@ namespace GearShop.Models
                 return Math.Round(rating / Comments.Count, 1);
             }
         }
+
+        public string PictureUrl { get; set; }
     }
 }
