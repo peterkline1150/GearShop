@@ -19,6 +19,13 @@ namespace GearShop.WebMVC.Controllers
             return View(model);
         }
 
+        // GET: Category/IndexByCategoryType
+        public ActionResult IndexByCategoryType(GearShop.Data.CategoryType categoryType)
+        {
+            var model = service.GetCategoriesByCategoryType(categoryType);
+            return View(model);
+        }
+
         // GET: Category/Create
         public ActionResult Create()
         {

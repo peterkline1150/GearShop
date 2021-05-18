@@ -23,5 +23,8 @@ namespace GearShop.Models.Gear_Models
         public decimal Price { get; set; }
 
         public int CategoryId { get; set; }
+
+        [Required]
+        public string PictureUrl { get; set; }
     }
 }

@@ -16,22 +16,25 @@ namespace GearShop.Data
         [Display(Name = "User ID:")]
         public Guid UserId { get; set; }
 
-        public virtual List<IndividualGear> GearInCart { get; set; } = new List<IndividualGear>();
+        public List<IndividualGear> GearInCart { get; set; } = new List<IndividualGear>();
 
-        public decimal Subtotal { get 
+        public decimal Subtotal
+        {
+            get
             {
                 decimal subtotal = 0;
-
                 foreach (var gear in GearInCart)
                 {
-                    subtotal += gear.CostOfGear;
+                    subtotal += gear.Price * gear.AmountOfGearInCart;
                 }
 
                 return Math.Round(subtotal, 2);
             }
         }
 
-        public decimal TotalCost { get 
+        public decimal TotalCost
+        {
+            get
             {
                 return Math.Round(Subtotal * 1.07m, 2);
             }

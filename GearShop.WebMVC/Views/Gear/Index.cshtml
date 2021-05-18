@@ -4,51 +4,35 @@
     ViewBag.Title = "Index";
 }
 
-<h2>Index</h2>
+<h2>All Gear</h2>
 
 <p>
     @Html.ActionLink("Create New", "Create")
+    Number: @TempData["AmountInCart"]
 </p>
 <table class="table">
-    <tr>
-        <th>
-            @Html.DisplayNameFor(model => model.Name)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.Price)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.IsAvailable)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.Category.CategoryName)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.AverageRating)
-        </th>
-    </tr>
-
 @foreach (var item in Model) {
 <tr>
     <td>
-        @Html.DisplayFor(modelItem => item.Name)
-    </td>
-    <td>
-        @Html.DisplayFor(modelItem => item.Price)
-    </td>
-    <td>
-        @Html.DisplayFor(modelItem => item.IsAvailable)
-    </td>
-    <td>
-        @Html.DisplayFor(modelItem => item.Category.CategoryName)
-    </td>
-    <td>
-        @Html.DisplayFor(modelItem => item.AverageRating)
-    </td>
-    <td>
-        @Html.ActionLink("Edit", "Edit", new { id = item.GearId }) |
-        @Html.ActionLink("Details", "Details", new { id = item.GearId }) |
-        @Html.ActionLink("Delete", "Delete", new { id = item.GearId })
+        <div class="card" style="width: 18rem;">
+            <img src="@item.PictureUrl" class="card-img-top" alt="...">
+            <div class="card-body">
+                <h5 class="card-title">@item.Name</h5>
+            </div>
+            <ul class="list-group list-group-flush">
+                <li class="list-group-item">@item.Category.CategoryName</li>
+                <li class="list-group-item">Price: $@item.Price</li>
+                <li class="list-group-item">Rating: @item.AverageRating/5</li>
+            </ul>
+            <div class="card-body">
+                <a href="@Url.Action("Details", new { id = item.GearId })" class="card-link">View This item</a>
+                @if (User.Identity.IsAuthenticated)
+                {
+                    <a href="@Url.Action("Edit", new { id = item.GearId })" class="card-link">Edit This Item</a>
+                    <a href="@Url.Action("Delete", new { id = item.GearId })" class="card-link">Delete This Item</a>
+                }
+            </div>
+        </div>
     </td>
 </tr>
 }

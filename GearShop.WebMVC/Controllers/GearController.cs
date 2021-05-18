@@ -1,4 +1,5 @@
-﻿using GearShop.Models.Gear_Models;
+﻿using GearShop.Models;
+using GearShop.Models.Gear_Models;
 using GearShop.Services;
 using System;
 using System.Collections.Generic;
@@ -48,6 +49,30 @@ namespace GearShop.WebMVC.Controllers
             var model = service.GetGearById(id);
             TempData["GearIdForComment"] = model.GearId;
             return View(model);
+        }
+
+        // POST: Gear/Details/{id}
+        [HttpPost]
+        [ValidateAntiForgeryToken]
+        public ActionResult Details(int id, GearDetail model)
+        {
+            if (!ModelState.IsValid) return View(model);
+
+            if (id != model.GearId)
+            {
+                ModelState.AddModelError("", "IDs do not match");
+                return View(model);
+            }
+
+            if (model.NumberOfGearInCart <= 0 || model.NumberOfGearInCart > model.NumAvailable)
+            {
+                ModelState.AddModelError("", "You cannot purchase that many");
+                return View(model);
+            }
+
+            TempData["GearToAddToCart"] = model;
+
+            return RedirectToAction("AddGearToCart", "Cart");
         }
 
         // GET: Gear/Edit/{id}
@@ -109,5 +134,8 @@ namespace GearShop.WebMVC.Controllers
 
             return RedirectToAction("Index");
         }
+
+        
+
     }
 }

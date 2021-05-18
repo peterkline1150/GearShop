@@ -24,6 +24,20 @@ namespace GearShop.Services
             }
         }
 
+        public IEnumerable<CategoryListItem> GetCategoriesByCategoryType(CategoryType categoryType)
+        {
+            using (var ctx = new ApplicationDbContext())
+            {
+                var query = ctx.Categories.Where(e => e.CategoryType == categoryType).Select(e => new CategoryListItem()
+                {
+                    CategoryId = e.CategoryId,
+                    CategoryName = e.CategoryName,
+                    CategoryType = e.CategoryType
+                });
+                return query.ToArray();
+            }
+        }
+
         public bool CreateCategory(CategoryCreate model)
         {
             using (var ctx = new ApplicationDbContext())
