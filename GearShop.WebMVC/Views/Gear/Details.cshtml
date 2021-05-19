@@ -1,0 +1,141 @@
+﻿@model GearShop.Models.GearDetail
+
+@{
+    ViewBag.Title = "Details";
+}
+
+<div>
+    <div class="jumbotron">
+        <img src="@Html.DisplayFor(model => model.PictureUrl)" class="w-50" />
+        <h1 class="display-4">@Html.DisplayFor(model => model.Name)</h1>
+        <p class="lead">@Html.DisplayFor(model => model.Category.CategoryName)</p>
+        <p class="lead">@Html.DisplayFor(model => model.Category.CategoryType)</p>
+        <hr class="my-4">
+        <p>Number Available: @Html.DisplayFor(model => model.NumAvailable)</p>
+        <p>Price per Unit: $@Html.DisplayFor(model => model.Price)</p>
+        <p>Average Rating: @Html.DisplayFor(model => model.AverageRating)</p>
+        @using (Html.BeginForm())
+        {
+            @Html.AntiForgeryToken()
+
+            <div class="form-horizontal">
+                <hr />
+                @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+                @Html.HiddenFor(model => model.GearId)
+                @Html.HiddenFor(model => model.AverageRating)
+                @Html.HiddenFor(model => model.Price)
+                @Html.HiddenFor(model => model.NumAvailable)
+                @Html.HiddenFor(model => model.Name)
+                @Html.HiddenFor(model => model.IsAvailable)
+                @Html.HiddenFor(model => model.PictureUrl)
+                <div class="form-group">
+                    <div class="col-md-10">
+                        @Html.DisplayNameFor(model => model.NumberOfGearInCart)
+                        @Html.EditorFor(model => model.NumberOfGearInCart, new { htmlAttributes = new { @class = "form-control" } })
+                        @Html.ValidationMessageFor(model => model.NumberOfGearInCart, "", new { @class = "text-danger" })
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <div class="col-md-offset-2 col-md-10">
+                        <input type="submit" value="Add to cart" class="btn btn-outline-primary" />
+                    </div>
+                </div>
+            </div>
+        }
+        <hr />
+        <h2 class="commentsheading">Comments</h2>
+        <br />
+        @for (int i = 0; i < Model.Comments.Count; i++)
+        {
+                <div class="media mb-5">
+                    <div class="media-body">
+                        <h5 class="mt-0">@Model.Comments[i].CommentTitle</h5>
+                        <p>@Model.Comments[i].CommentText</p>
+                        <p class="card-text"><small class="text-muted">Posted by: @Model.Comments[i].UserId</small></p>
+                        @Html.ActionLink("View Replies", "Details", "Comment", new { id = Model.Comments[i].CommentId }, null)
+                    </div>
+                </div>
+        }
+        <br />
+        <p class="col-md-12">
+            <a href="@Url.Action("Create", "Comment")" class="btn btn-primary">Leave a review!</a>
+            @if (User.Identity.IsAuthenticated)
+            {
+                @Html.ActionLink("Edit this piece of Gear", "Edit", new { id = Model.GearId });
+                <span> | </span>
+                @Html.ActionLink("Back to Categories", "Index", "Category");
+            }
+        </p>
+    </div>
+</div>
+
+
+
+
+@*<script src="~/Scripts/jquery-3.4.1.min.js"></script>*@
+<!--<script>
+    document.getElementById('addToCart').addEventListener('click', addToCart)
+
+    function addToCart() {
+        const quantity = $('#AmountOfGearInCart option:selected').val();
+        const datapacket = {
+            GearId: @Html.DisplayFor(model => model.GearId),
+            GearNameInCart: '@Html.DisplayFor(model => model.Name)',
+            CostOfGear: @Html.DisplayFor(model => model.Price),
+            AmountOfGearInCart: quantity
+        }-->
+@*$.ajax({
+        type: 'POST',
+        url: 'https://localhost:44345'+'@Url.Action("AddGearToCart", "Cart")',
+        dataType: 'json',
+        data: datapacket,
+        success: function (result) {
+            console.log('Success!')
+        },
+        error: function (result) {
+            console.log(result.responseText)
+        }
+    });*@
+<!--// Example POST method implementation:
+async function postData(url, data) {
+    // Default options are marked with *
+    const response = await fetch(url, {
+        method: 'POST', // *GET, POST, PUT, DELETE, etc.
+        mode: 'cors', // no-cors, *cors, same-origin
+        cache: 'no-cache', // *default, no-cache, reload, force-cache, only-if-cached
+        credentials: 'same-origin', // include, *same-origin, omit
+        headers: {
+            'Content-Type': 'application/json'
+            // 'Content-Type': 'application/x-www-form-urlencoded',
+        },
+        redirect: 'follow', // manual, *follow, error
+        referrerPolicy: 'no-referrer', // no-referrer, *no-referrer-when-downgrade, origin, origin-when-cross-origin, same-origin, strict-origin, strict-origin-when-cross-origin, unsafe-url
+        body: JSON.stringify(data) // body data type must match "Content-Type" header
+    });
+    return response.json(); // parses JSON response into native JavaScript objects
+}
+
+postData('https://localhost:44345'+'@**@Url.Action("CreateIndividualGearItem", "Cart")', datapacket).then(res => console.log(res))-->
+@*$.ajax({
+        type: "POST",
+        url: "/Cart/CreateIndividualGearItem",
+        data: JSON.stringify(datapacket),
+        contentType: "application/json; charset=utf-8",
+        dataType: "json",
+        success: function (response) {
+            if (response != null) {
+                alert("Success!");
+            } else {
+                alert("Something went wrong");
+            }
+        },
+        failure: function (response) {
+            alert(response.responseText);
+        },
+        error: function (response) {
+            alert(response.responseText);
+        }
+    }); *@
+<!--}
+</script>-->

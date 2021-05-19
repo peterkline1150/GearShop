@@ -60,12 +60,71 @@
     <Compile Include="Gear.cs" />
     <Compile Include="IdentityModels.cs" />
     <Compile Include="IndividualGear.cs" />
+    <Compile Include="Migrations\202105121407067_InitialCreate.cs" />
+    <Compile Include="Migrations\202105121407067_InitialCreate.Designer.cs">
+      <DependentUpon>202105121407067_InitialCreate.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\202105122102444_FirstMigration.cs" />
+    <Compile Include="Migrations\202105122102444_FirstMigration.Designer.cs">
+      <DependentUpon>202105122102444_FirstMigration.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\202105171300490_ChangedIndividualGear.cs" />
+    <Compile Include="Migrations\202105171300490_ChangedIndividualGear.Designer.cs">
+      <DependentUpon>202105171300490_ChangedIndividualGear.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\202105171348118_FixingCartAgain.cs" />
+    <Compile Include="Migrations\202105171348118_FixingCartAgain.Designer.cs">
+      <DependentUpon>202105171348118_FixingCartAgain.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\202105171405044_AddedNameToIndividualGear.cs" />
+    <Compile Include="Migrations\202105171405044_AddedNameToIndividualGear.Designer.cs">
+      <DependentUpon>202105171405044_AddedNameToIndividualGear.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\202105171551130_FixingCartAgain1.cs" />
+    <Compile Include="Migrations\202105171551130_FixingCartAgain1.Designer.cs">
+      <DependentUpon>202105171551130_FixingCartAgain1.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\202105171551335_FixThings.cs" />
+    <Compile Include="Migrations\202105171551335_FixThings.Designer.cs">
+      <DependentUpon>202105171551335_FixThings.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\202105172022296_AddedPicturesToGear.cs" />
+    <Compile Include="Migrations\202105172022296_AddedPicturesToGear.Designer.cs">
+      <DependentUpon>202105172022296_AddedPicturesToGear.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Reply.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />
     <None Include="packages.config" />
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="Migrations\202105121407067_InitialCreate.resx">
+      <DependentUpon>202105121407067_InitialCreate.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202105122102444_FirstMigration.resx">
+      <DependentUpon>202105122102444_FirstMigration.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202105171300490_ChangedIndividualGear.resx">
+      <DependentUpon>202105171300490_ChangedIndividualGear.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202105171348118_FixingCartAgain.resx">
+      <DependentUpon>202105171348118_FixingCartAgain.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202105171405044_AddedNameToIndividualGear.resx">
+      <DependentUpon>202105171405044_AddedNameToIndividualGear.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202105171551130_FixingCartAgain1.resx">
+      <DependentUpon>202105171551130_FixingCartAgain1.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202105171551335_FixThings.resx">
+      <DependentUpon>202105171551335_FixThings.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202105172022296_AddedPicturesToGear.resx">
+      <DependentUpon>202105172022296_AddedPicturesToGear.cs</DependentUpon>
+    </EmbeddedResource>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

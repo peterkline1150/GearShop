@@ -56,5 +56,8 @@ namespace GearShop.Data
                 return Math.Round(rating / Comments.Count, 1);
             }
         }
+
+        [Required]
+        public string PictureUrl { get; set; }
     }
 }

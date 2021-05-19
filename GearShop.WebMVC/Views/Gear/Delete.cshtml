@@ -1,0 +1,74 @@
+﻿@model GearShop.Models.GearDetail
+
+@{
+    ViewBag.Title = "Delete Gear";
+}
+<div class="card bg-danger">
+    <div class="card-header">
+        <h5>Delete this Category?</h5>
+    </div>
+    <div class="card-body">
+        <dl class="dl-horizontal">
+            <dt>
+                @Html.DisplayNameFor(model => model.GearId)
+            </dt>
+
+            <dd>
+                @Html.DisplayFor(model => model.GearId)
+            </dd>
+
+            <dt>
+                @Html.DisplayNameFor(model => model.Name)
+            </dt>
+
+            <dd>
+                @Html.DisplayFor(model => model.Name)
+            </dd>
+
+            <dt>
+                @Html.DisplayNameFor(model => model.NumAvailable)
+            </dt>
+
+            <dd>
+                @Html.DisplayFor(model => model.NumAvailable)
+            </dd>
+
+            <dt>
+                @Html.DisplayNameFor(model => model.IsAvailable)
+            </dt>
+
+            <dd>
+                @Html.DisplayFor(model => model.IsAvailable)
+            </dd>
+
+            <dt>
+                @Html.DisplayNameFor(model => model.Price)
+            </dt>
+
+            <dd>
+                $@Html.DisplayFor(model => model.Price)
+            </dd>
+
+            <dt>
+                @Html.DisplayNameFor(model => model.AverageRating)
+            </dt>
+
+            <dd>
+                @Html.DisplayFor(model => model.AverageRating)
+            </dd>
+
+        </dl>
+    </div>
+
+    <div class="card-body">
+        @using (Html.BeginForm())
+        {
+            @Html.AntiForgeryToken()
+
+            <div class="form-actions no-color">
+                <input type="submit" value="Delete" class="btn btn-primary mr-3" />
+                <a href="@Url.Action("Index")" class="btn btn-success">Return to All Gear</a>
+            </div>
+        }
+    </div>
+</div>

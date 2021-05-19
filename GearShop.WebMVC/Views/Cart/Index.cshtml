@@ -1,0 +1,33 @@
+﻿@model GearShop.Models.Cart_Models.CartDetail
+
+<h2>Your Cart</h2>
+
+<div>
+    @{
+        foreach (var gear in Model.GearInCart)
+        {
+            <div class="card">
+                <div class="card-header">
+                    @Html.DisplayFor(model => gear.NameOfGear)
+                </div>
+                <div class="card-body">
+                    <div class="row">
+                        <p class="col-4">Quantity: @Html.DisplayFor(model => gear.AmountOfGearInCart)</p>
+                        <p class="col-4">Cost: $@(gear.Price * gear.AmountOfGearInCart)</p>
+                    </div>
+                </div>
+            </div>
+        }
+    }
+
+    <div class="card mt-5" style="width: 18rem;">
+        <div class="card-body">
+            <p class="card-text">Subtotal: $@Model.Subtotal</p>
+            <h5 class="card-title">Total Cost of Cart: $@Model.TotalCost</h5>
+            <br />
+            <a href="@Url.Action("Edit", new { id = Model.CartId })" class="btn btn-outline-danger mb-2">Edit your Cart</a>
+            <a href="@Url.Action("CheckOut")" class="btn btn-outline-success mb-4">Click Here to Check Out</a>
+            <a href="@Url.Action("Index", "Home")" class="btn btn-outline-secondary">Return to Home Page</a>
+        </div>
+    </div>
+</div>

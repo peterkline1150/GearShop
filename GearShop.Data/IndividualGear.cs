@@ -13,24 +13,26 @@ namespace GearShop.Data
         [Key]
         public int Id { get; set; }
 
-        [Required]
-        public string GearNameInCart { get; set; }
+        [ForeignKey(nameof(GearInCart))]
+        public int? GearId { get; set; }
+
+        public Gear GearInCart { get; set; }
 
         [Required]
         public int AmountOfGearInCart { get; set; }
 
         [Required]
-        public decimal CostOfGear { get; set; }
+        public string NameOfGear { get; set; }
 
         [Required]
-        public int GearId { get; set; }
+        public decimal Price { get; set; }
 
         [Required]
         public Guid UserId { get; set; }
 
         [ForeignKey(nameof(Cart))]
-        public int CartId { get; set; }
+        public int? CartId { get; set; }
 
-        public virtual Cart Cart { get; set; }
+        public Cart Cart { get; set; }
     }
 }

@@ -1,0 +1,41 @@
+﻿@model IEnumerable<GearShop.Models.GearListItem>
+
+@{
+    ViewBag.Title = "Index";
+}
+
+<h2>All Gear</h2>
+
+<p>
+    @Html.ActionLink("Create New", "Create")
+</p>
+<table class="table">
+    @foreach (var item in Model)
+    {
+        <tr>
+            <td>
+                <div class="card" style="width: 18rem;">
+                    <img src="@item.PictureUrl" class="card-img-top" alt="...">
+                    <div class="card-body">
+                        <h5 class="card-title">@item.Name</h5>
+                    </div>
+                    <ul class="list-group list-group-flush">
+                        <li class="list-group-item">@item.Category.CategoryName</li>
+                        <li class="list-group-item">Price: $@item.Price</li>
+                        <li class="list-group-item">Rating: @item.AverageRating/5</li>
+                    </ul>
+                    <div class="card-body">
+                        <a href="@Url.Action("Details", new { id = item.GearId })" class="card-link">View This item</a>
+                        @if (User.Identity.IsAuthenticated)
+                        {
+                            <a href="@Url.Action("Edit", new { id = item.GearId })" class="card-link">Edit This Item</a>
+                            <a href="@Url.Action("Delete", new { id = item.GearId })" class="card-link">Delete This Item</a>
+                        }
+                    </div>
+                </div>
+            </td>
+        </tr>
+    }
+
+</table>
+

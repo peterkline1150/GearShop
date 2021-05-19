@@ -17,6 +17,11 @@ namespace GearShop.Data
         [Display(Name = "User ID:")]
         public Guid UserId { get; set; }
 
+        [Required]
+        [Display(Name = "Title: ")]
+        [MaxLength(50, ErrorMessage = "Title is too long.")]
+        public string CommentTitle { get; set; }
+
         [Display(Name = "Comment:")]
         public string CommentText { get; set; }
 
