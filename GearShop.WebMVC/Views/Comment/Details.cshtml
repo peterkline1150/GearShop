@@ -1,54 +1,33 @@
 ﻿@model GearShop.Models.Comment_Models.CommentDetail
 
-@{
-    ViewBag.Title = "Details";
-}
-
-<h2>Details</h2>
-
-<div>
-    <h4>CommentDetail</h4>
-    <hr />
-    <dl class="dl-horizontal">
-        <dt>
-            @Html.DisplayNameFor(model => model.CommentTitle)
-        </dt>
-
-        <dd>
-            @Html.DisplayFor(model => model.CommentTitle)
-        </dd>
-
-        <dt>
-            @Html.DisplayNameFor(model => model.CommentText)
-        </dt>
-
-        <dd>
-            @Html.DisplayFor(model => model.CommentText)
-        </dd>
-
-        <dt>
-            @Html.DisplayNameFor(model => model.Rating)
-        </dt>
-
-        <dd>
-            @Html.DisplayFor(model => model.Rating)
-        </dd>
-
-        <dt>
-            @Html.DisplayNameFor(model => model.Replies)
-        </dt>
-
-        @{ 
-            foreach (var reply in Model.Replies)
-            {
-                <dd>
-                    <p>@reply.ReplyText</p>
-                </dd>
-            }
-        }
-
-    </dl>
+<div class="card mb-3 comment_card" style="height: 50%; width: 50%;">
+    <img class="card-img-top" src="@Model.Gear.PictureUrl" alt="Card image cap">
+    <div class="card-body">
+        <h5 class="card-title">@Model.Gear.Name</h5>
+    </div>
 </div>
+
+<div class="jumbotron">
+    <div class="media">
+        <div class="media-body">
+            <h5 class="mt-0">@Model.CommentTitle</h5>
+            <p>@Model.CommentText</p>
+            <p class="card-text"><small class="text-muted">Posted by: @Model.UserId</small></p>
+            @foreach (var reply in Model.Replies)
+            {
+                <div class="media mt-3">
+                    <a class="mr-3" href="#">
+                    </a>
+                    <div class="media-body">
+                        <p>@reply.ReplyText</p>
+                        <p class="card-text"><small class="text-muted">Posted by: @reply.UserId</small></p>
+                    </div>
+                </div>
+            }
+        </div>
+    </div>
+</div>
+
 <p>
     <a href="@Url.Action("Create", "Reply")" class="btn btn-primary">Reply to this Comment</a>
     @Html.ActionLink("Edit", "Edit", new { id = Model.CommentId }) |

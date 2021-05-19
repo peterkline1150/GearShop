@@ -13,6 +13,13 @@ namespace GearShop.WebMVC.Controllers
             return View();
         }
 
+        [HttpPost]
+        public ActionResult Index(string name)
+        {
+            TempData["GearNameToSearch"] = name;
+            return RedirectToAction("IndexByName", "Gear");
+        }
+
         public ActionResult About()
         {
             ViewBag.Message = "Your application description page.";

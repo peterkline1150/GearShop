@@ -69,6 +69,7 @@
     <Compile Include="Gear Models\GearDetail.cs" />
     <Compile Include="Gear Models\GearEdit.cs" />
     <Compile Include="Gear Models\GearListItem.cs" />
+    <Compile Include="Gear Models\GearName.cs" />
     <Compile Include="IndividualGear Models\IndividualGearCreate.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Reply Models\ReplyCreate.cs" />

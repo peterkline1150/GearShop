@@ -369,6 +369,7 @@
     <Content Include="Views\Cart\Edit.cshtml" />
     <Content Include="Views\Cart\CheckOut.cshtml" />
     <Content Include="Views\Category\IndexByCategoryType.cshtml" />
+    <Content Include="Views\Gear\IndexByName.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

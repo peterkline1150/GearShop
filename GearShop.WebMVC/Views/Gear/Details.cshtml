@@ -4,114 +4,71 @@
     ViewBag.Title = "Details";
 }
 
-<h2>Details</h2>
-
 <div>
-    <h4>GearDetail</h4>
-    <hr />
-    <dl class="dl-horizontal">
-        <dt>
-            @Html.DisplayNameFor(model => model.GearId)
-        </dt>
+    <div class="jumbotron">
+        <img src="@Html.DisplayFor(model => model.PictureUrl)" class="w-50" />
+        <h1 class="display-4">@Html.DisplayFor(model => model.Name)</h1>
+        <p class="lead">@Html.DisplayFor(model => model.Category.CategoryName)</p>
+        <p class="lead">@Html.DisplayFor(model => model.Category.CategoryType)</p>
+        <hr class="my-4">
+        <p>Number Available: @Html.DisplayFor(model => model.NumAvailable)</p>
+        <p>Price per Unit: $@Html.DisplayFor(model => model.Price)</p>
+        <p>Average Rating: @Html.DisplayFor(model => model.AverageRating)</p>
+        @using (Html.BeginForm())
+        {
+            @Html.AntiForgeryToken()
 
-        <dd>
-            @Html.DisplayFor(model => model.GearId)
-        </dd>
+            <div class="form-horizontal">
+                <hr />
+                @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+                @Html.HiddenFor(model => model.GearId)
+                @Html.HiddenFor(model => model.AverageRating)
+                @Html.HiddenFor(model => model.Price)
+                @Html.HiddenFor(model => model.NumAvailable)
+                @Html.HiddenFor(model => model.Name)
+                @Html.HiddenFor(model => model.IsAvailable)
+                @Html.HiddenFor(model => model.PictureUrl)
+                <div class="form-group">
+                    <div class="col-md-10">
+                        @Html.DisplayNameFor(model => model.NumberOfGearInCart)
+                        @Html.EditorFor(model => model.NumberOfGearInCart, new { htmlAttributes = new { @class = "form-control" } })
+                        @Html.ValidationMessageFor(model => model.NumberOfGearInCart, "", new { @class = "text-danger" })
+                    </div>
+                </div>
 
-        <dt>
-            @Html.DisplayNameFor(model => model.Name)
-        </dt>
-
-        <dd>
-            @Html.DisplayFor(model => model.Name)
-        </dd>
-
-        <dt>
-            @Html.DisplayNameFor(model => model.NumAvailable)
-        </dt>
-
-        <dd>
-            @Html.DisplayFor(model => model.NumAvailable)
-        </dd>
-
-        <dt>
-            @Html.DisplayNameFor(model => model.IsAvailable)
-        </dt>
-
-        <dd>
-            @Html.DisplayFor(model => model.IsAvailable)
-        </dd>
-
-        <dt>
-            @Html.DisplayNameFor(model => model.Price)
-        </dt>
-
-        <dd>
-            @Html.DisplayFor(model => model.Price)
-        </dd>
-
-        <dt>
-            @Html.DisplayNameFor(model => model.Category)
-        </dt>
-
-        <dd>
-            @Html.DisplayFor(model => model.Category.CategoryName)
-        </dd>
-
-        <dt>
-            @Html.DisplayNameFor(model => model.Category)
-        </dt>
-
-        <dd>
-            @Html.DisplayFor(model => model.Category.CategoryType)
-        </dd>
-
-        <dt>
-            @Html.DisplayNameFor(model => model.AverageRating)
-        </dt>
-
-        <dd>
-            @Html.DisplayFor(model => model.AverageRating)
-        </dd>
-
-    </dl>
-</div>
-
-@using (Html.BeginForm())
-{
-    @Html.AntiForgeryToken()
-
-    <div class="form-horizontal">
+                <div class="form-group">
+                    <div class="col-md-offset-2 col-md-10">
+                        <input type="submit" value="Add to cart" class="btn btn-outline-primary" />
+                    </div>
+                </div>
+            </div>
+        }
         <hr />
-        @Html.ValidationSummary(true, "", new { @class = "text-danger" })
-        @Html.HiddenFor(model => model.GearId)
-        @Html.HiddenFor(model => model.AverageRating)
-        @Html.HiddenFor(model => model.Price)
-        @Html.HiddenFor(model => model.NumAvailable)
-        @Html.HiddenFor(model => model.Name)
-        @Html.HiddenFor(model => model.IsAvailable)
-        @Html.HiddenFor(model => model.PictureUrl)
-        <div class="form-group">
-            <div class="col-md-10">
-                @Html.DisplayNameFor(model => model.NumberOfGearInCart)
-                @Html.EditorFor(model => model.NumberOfGearInCart, new { htmlAttributes = new { @class = "form-control" } })
-                @Html.ValidationMessageFor(model => model.NumberOfGearInCart, "", new { @class = "text-danger" })
-            </div>
-        </div>
-
-        <div class="form-group">
-            <div class="col-md-offset-2 col-md-10">
-                <input type="submit" value="Add to cart" class="btn btn-outline-primary" />
-            </div>
-        </div>
+        <h2 class="commentsheading">Comments</h2>
+        <br />
+        @for (int i = 0; i < Model.Comments.Count; i++)
+        {
+                <div class="media">
+                    <div class="media-body">
+                        <h5 class="mt-0">@Model.Comments[i].CommentTitle</h5>
+                        <p>@Model.Comments[i].CommentText</p>
+                        <p class="card-text"><small class="text-muted">Posted by: @Model.Comments[i].UserId</small></p>
+                        @Html.ActionLink("View Replies", "Details", "Comment", new { id = Model.Comments[i].CommentId }, null)
+                    </div>
+                </div>
+        }
+        <br />
+        <p class="col-md-12">
+            <a href="@Url.Action("Create", "Comment")" class="btn btn-primary">Leave a review!</a>
+            @if (User.Identity.IsAuthenticated)
+            {
+                @Html.ActionLink("Edit this piece of Gear", "Edit", new { id = Model.GearId });
+                <span> | </span>
+                @Html.ActionLink("Back to Categories", "Index", "Category");
+            }
+        </p>
     </div>
-}
-
-<p class="col-md-12">
-    <a href="@Url.Action("Create", "Comment")" class="btn btn-primary">Leave a review!</a>
-    @Html.ActionLink("Edit", "Edit", new { /* id = Model.PrimaryKey */ }) |
-    @Html.ActionLink("Back to List", "Index")
-</p>
+</div>
 
 
 

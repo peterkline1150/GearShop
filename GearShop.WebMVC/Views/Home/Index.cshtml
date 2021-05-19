@@ -1,8 +1,10 @@
 ﻿@{
     ViewBag.Title = "Home Page";
 }
-
 <div id="carouselExampleFade" class="carousel_item carousel slide carousel-fade" data-ride="carousel">
+    <div class="carousel_title">
+        <h1>Enjoy your life to the fullest!</h1>
+    </div>
     <div class="carousel-inner">
         <div class="carousel-item active">
             <img src="~/Assets/climbing harnesses.jpg" class="d-block w-100" alt="...">
@@ -24,35 +26,32 @@
     </a>
 </div>
 
-    <div class="row my-5 justify-content-center">
-        <div class="col-md-4">
-            <div class="card" style="width: 18rem;">
-                <img src="~/Assets/climbing gear.jpg" class="card-img-top" alt="...">
-                <div class="card-body">
-                    <h5 class="card-title">Gear</h5>
-                    <p class="card-text">View all of the gear you could ever want, and more!</p>
-                </div>
-                <div class="card-body">
-                    <a href="@Url.Action("Index", "Category")" class="btn btn-outline-secondary">Click here to view our stock.</a>
-                </div>
+<div class="row my-5 justify-content-center">
+    <div class="col-md-4">
+        <div class="card" style="width: 18rem;">
+            <img src="~/Assets/climbing gear.jpg" class="card-img-top" alt="...">
+            <div class="card-body">
+                <h5 class="card-title">Gear</h5>
+                <p class="card-text">View all of the gear you could ever want, and more!</p>
+            </div>
+            <div class="card-body">
+                <a href="@Url.Action("Index", "Category")" class="btn btn-outline-secondary">Click here to view our stock.</a>
             </div>
         </div>
-        <div class="col-md-4">
-            <div class="card" style="width: 18rem;">
-                <img src="..." class="card-img-top" alt="...">
-                <div class="card-body">
-                    <h5 class="card-title">What are you interested in?</h5>
-                </div>
-                <ul class="list-group list-group-flush">
-                    <li class="list-group-item"><a href="@Url.Action("IndexByCategoryType", "Category", new { categoryType = GearShop.Data.CategoryType.Climbing })" class="card-link">Climbing</a></li>
-                    <li class="list-group-item"><a href="@Url.Action("IndexByCategoryType", "Category", new { categoryType = GearShop.Data.CategoryType.Hiking })" class="card-link">Hiking</a></li>
-                    <li class="list-group-item"><a href="@Url.Action("IndexByCategoryType", "Category", new { categoryType = GearShop.Data.CategoryType.Camping })" class="card-link">Camping</a></li>
-                    <li class="list-group-item"><a href="@Url.Action("IndexByCategoryType", "Category", new { categoryType = GearShop.Data.CategoryType.Cycling })" class="card-link">Cycling</a></li>
-                    <li class="list-group-item"><a href="@Url.Action("IndexByCategoryType", "Category", new { categoryType = GearShop.Data.CategoryType.Running })" class="card-link">Running</a></li>
-                </ul>
-                <div class="card-body">
-                    <a href="#" class="card-link">Another link</a>
-                </div>
+    </div>
+    <div class="col-md-4">
+        <div class="card" style="width: 18rem;">
+            <img src="~/Assets/sailing.jpg" class="card-img-top" alt="...">
+            <div class="card-body">
+                <h5 class="card-title">What are you interested in?</h5>
             </div>
+            <ul class="list-group list-group-flush">
+                <li class="list-group-item"><a href="@Url.Action("IndexByCategoryType", "Category", new { categoryType = GearShop.Data.CategoryType.Climbing })" class="card-link">Climbing</a></li>
+                <li class="list-group-item"><a href="@Url.Action("IndexByCategoryType", "Category", new { categoryType = GearShop.Data.CategoryType.Hiking })" class="card-link">Hiking</a></li>
+                <li class="list-group-item"><a href="@Url.Action("IndexByCategoryType", "Category", new { categoryType = GearShop.Data.CategoryType.Camping })" class="card-link">Camping</a></li>
+                <li class="list-group-item"><a href="@Url.Action("IndexByCategoryType", "Category", new { categoryType = GearShop.Data.CategoryType.Cycling })" class="card-link">Cycling</a></li>
+                <li class="list-group-item"><a href="@Url.Action("IndexByCategoryType", "Category", new { categoryType = GearShop.Data.CategoryType.Running })" class="card-link">Running</a></li>
+            </ul>
         </div>
+    </div>
 </div>

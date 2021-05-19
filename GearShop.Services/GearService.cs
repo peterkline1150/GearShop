@@ -30,6 +30,25 @@ namespace GearShop.Services
             }
         }
 
+        public IEnumerable<GearListItem> GetGearByName(string name)
+        {
+            using (var ctx = new ApplicationDbContext())
+            {
+                var query = ctx.Gear.Where(e => e.Name.Contains(name)).Select(e => new GearListItem()
+                {
+                    GearId = e.GearId,
+                    Name = e.Name,
+                    Price = e.Price,
+                    Category = e.Category,
+                    Comments = e.Comments,
+                    NumAvailable = e.NumAvailable,
+                    PictureUrl = e.PictureUrl
+                });
+
+                return query.ToArray();
+            }
+        }
+
         public bool CreateGear(GearCreate model)
         {
             using (var ctx = new ApplicationDbContext())
