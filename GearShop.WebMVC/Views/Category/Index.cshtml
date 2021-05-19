@@ -7,6 +7,7 @@
                 <div class="card mb-5 category_list_cards" style="width: 25rem;">
                     <div class="card-body">
                         <h5 class="card-title">@item.CategoryName</h5>
+                        <p class="card-text"><small class="text-muted">@item.CategoryType</small></p>
                         <a href="@Url.Action("Details", new { id = item.CategoryId })" class="card-link">View Gear in this Category</a>
                         @if (User.Identity.IsAuthenticated)
                         {
@@ -18,5 +19,3 @@
             </td>
         </tr>
     }
-
-</table>
