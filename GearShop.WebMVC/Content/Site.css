@@ -1,6 +1,11 @@
 ﻿body {
     padding-top: 50px;
     padding-bottom: 20px;
+    background-image: url("/Assets/background.jpg");
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-attachment: fixed;
 }
 
 /* Set padding to keep content from hitting the edges */
@@ -21,4 +26,32 @@ input,
 select,
 textarea {
     max-width: 280px;
+}
+
+.carousel_item {
+    background-color: rgba(128, 128, 128, 0.6);
+    padding-top: 5px;
+    border: 0px solid hidden;
+    border-radius: 5px 5px;
+}
+
+.carousel_title {
+    color: white;
+    text-align: center;
+    font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
+}
+
+.category_list_cards {
+    background-color: rgba(16, 14, 14, 0.9);
+    color: rgb(255, 255, 255);
+}
+
+.category_detail {
+    background-color: rgba(16, 14, 14, 0.6);
+    text-align: center;
+    justify-content: center;
+}
+
+.commentsheading {
+    font-family: 'Pattaya', sans-serif;
 }

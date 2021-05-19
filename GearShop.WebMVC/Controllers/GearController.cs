@@ -20,6 +20,12 @@ namespace GearShop.WebMVC.Controllers
             return View(model);
         }
 
+        public ActionResult IndexByName()
+        {
+            var model = service.GetGearByName(TempData["GearNameToSearch"].ToString());
+            return View(model);
+        }
+
         // GET: Gear/Create
         public ActionResult Create()
         {

@@ -55,7 +55,7 @@ namespace GearShop.Services
         {
             using (var ctx = new ApplicationDbContext())
             {
-                var entity = ctx.Comments.Single(e => e.CommentId == id && e.UserId == _userId);
+                var entity = ctx.Comments.Find(id);
 
                 return new CommentDetail()
                 {

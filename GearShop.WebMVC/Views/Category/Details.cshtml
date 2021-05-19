@@ -1,14 +1,6 @@
 ﻿@model GearShop.Models.Category_Models.CategoryDetail
 
-@{
-    ViewBag.Title = "Details";
-}
-
-<h2>Details</h2>
-
-<div>
-    <h4>CategoryDetail</h4>
-    <hr />
+<div class="category_detail">
     <dl class="dl-horizontal">
         <dt>
             @Html.DisplayNameFor(model => model.CategoryName)
@@ -21,17 +13,24 @@
         <dt>
             @Html.DisplayNameFor(model => model.GearInCategory)
         </dt>
+    </dl>
 
-        @{ 
+    <div class="row row-cols-1 row-cols-md-3">
+        @{
             foreach (var gear in Model.GearInCategory)
             {
-                <dd>
-                    <a href="@Url.Action("Details", "Gear", new { id = gear.GearId})" class="btn btn-primary">@gear.Name</a>
-                </dd>
+                <div class="col mb-4">
+                    <div class="card h-100" style="width: 15rem;">
+                        <img class="card-img-top" src="@Html.DisplayFor(model => gear.PictureUrl)" alt="Card image cap">
+                        <div class="card-body">
+                            <h5 class="card-title">@gear.Name</h5>
+                            <a href="@Url.Action("Details", "Gear", new { id = gear.GearId})" class="btn btn-primary">View this Gear</a>
+                        </div>
+                    </div>
+                </div>
             }
         }
-
-    </dl>
+    </div>
 </div>
 <br />
 
