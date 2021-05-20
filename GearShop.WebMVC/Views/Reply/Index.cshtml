@@ -1,39 +1,39 @@
 ﻿@model IEnumerable<GearShop.Models.Reply_Models.ReplyListItem>
 
 @{
-    ViewBag.Title = "Index";
+    ViewBag.Title = "Your Replies";
 }
 
-<h2>Index</h2>
+<div class="jumbotron">
+    <div class="text-md-center">
+        <h5>Your Replies</h5>
+    </div>
+    <table class="table">
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.Comment) Replied to:
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.ReplyText)
+            </th>
+            <th></th>
+        </tr>
 
-<p>
-    @Html.ActionLink("Create New", "Create")
-</p>
-<table class="table">
-    <tr>
-        <th>
-            @Html.DisplayNameFor(model => model.Comment)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.ReplyText)
-        </th>
-        <th></th>
-    </tr>
+        @foreach (var item in Model)
+        {
+            <tr>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Comment.CommentTitle)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.ReplyText)
+                </td>
+                <td>
+                    @Html.ActionLink("Edit", "Edit", new { id = item.ReplyId }) |
+                    @Html.ActionLink("Delete", "Delete", new { id = item.ReplyId })
+                </td>
+            </tr>
+        }
 
-@foreach (var item in Model) {
-    <tr>
-        <td>
-            @Html.DisplayFor(modelItem => item.Comment.CommentTitle)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.ReplyText)
-        </td>
-        <td>
-            @Html.ActionLink("Edit", "Edit", new { id=item.ReplyId }) |
-            @Html.ActionLink("Details", "Details", new { id=item.ReplyId }) |
-            @Html.ActionLink("Delete", "Delete", new { id=item.ReplyId })
-        </td>
-    </tr>
-}
-
-</table>
+    </table>
+</div>

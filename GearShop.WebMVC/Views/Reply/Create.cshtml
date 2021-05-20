@@ -1,45 +1,47 @@
 ﻿@model GearShop.Models.Reply_Models.ReplyCreate
 
 @{
-    ViewBag.Title = "Create";
+    ViewBag.Title = "Add Reply";
     GearShop.Models.Comment_Models.CommentDetail comment = (GearShop.Models.Comment_Models.CommentDetail)TempData["CommentToReplyTo"];
 }
 
-<h2>Create</h2>
-
-
-@using (Html.BeginForm()) 
+@using (Html.BeginForm())
 {
     @Html.AntiForgeryToken()
-    
-    <div class="form-horizontal">
-        <p>Title: @comment.CommentTitle</p>
-        <p>Comment: @comment.CommentText</p>
+
+    <div class="jumbotron">
+        <h1 class="display-4">@comment.CommentTitle</h1>
+        <p class="lead">@comment.CommentText</p>
     </div>
 
-    <div class="form-horizontal">
-        <h4>ReplyCreate</h4>
-        <hr />
-        @Html.ValidationSummary(true, "", new { @class = "text-danger" })
-        <div class="form-group">
-            @Html.LabelFor(model => model.ReplyText, htmlAttributes: new { @class = "control-label col-md-2" })
-            <div class="col-md-10">
-                @Html.EditorFor(model => model.ReplyText, new { htmlAttributes = new { @class = "form-control" } })
-                @Html.ValidationMessageFor(model => model.ReplyText, "", new { @class = "text-danger" })
-            </div>
+    <div class="card">
+        <div class="card-header">
+            <h5>Create Reply</h5>
         </div>
+        <div class="card-body">
+            <div class="form-horizontal">
+                <hr />
+                @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+                <div class="form-group">
+                    @Html.LabelFor(model => model.ReplyText, htmlAttributes: new { @class = "control-label col-md-2" })
+                    <div class="col-md-10">
+                        @Html.EditorFor(model => model.ReplyText, new { htmlAttributes = new { @class = "form-control", @placeholder = "Enter your reply here" } })
+                        @Html.ValidationMessageFor(model => model.ReplyText, "", new { @class = "text-danger" })
+                    </div>
+                </div>
 
-        <div class="form-group">
-            <div class="col-md-offset-2 col-md-10">
-                <input type="submit" value="Create" class="btn btn-default" />
+                <div class="form-group">
+                    <div class="col-md-offset-2 col-md-10">
+                        <input type="submit" value="Create" class="btn btn-primary" />
+                    </div>
+                </div>
+                <div>
+                    @Html.ActionLink("View all of your replies", "Index")
+                </div>
             </div>
         </div>
     </div>
 }
-
-<div>
-    @Html.ActionLink("Back to List", "Index")
-</div>
 
 @section Scripts {
     @Scripts.Render("~/bundles/jqueryval")

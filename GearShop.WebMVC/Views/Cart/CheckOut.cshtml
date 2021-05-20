@@ -1,12 +1,12 @@
 ﻿@model GearShop.Models.Cart_Models.CartCheckout
 
 @{
-    ViewBag.Title = "CheckOut";
+    ViewBag.Title = "Check Out";
 }
 
 <h2>Check Out</h2>
-<div>
-    <h4>Thank you for purchasing from our site!</h4>
+<div class="jumbotron">
+    <h4 class="mb-5">Thank you for purchasing from our site!</h4>
     <hr />
     <dl class="dl-horizontal">
         <dt>
@@ -14,7 +14,7 @@
         </dt>
 
         <dd>
-            @Html.DisplayFor(model => model.Subtotal)
+            $@Html.DisplayFor(model => model.Subtotal)
         </dd>
 
         <dt>
@@ -22,7 +22,7 @@
         </dt>
 
         <dd>
-            @Html.DisplayFor(model => model.TotalCost)
+            $@Html.DisplayFor(model => model.TotalCost)
         </dd>
 
     </dl>
