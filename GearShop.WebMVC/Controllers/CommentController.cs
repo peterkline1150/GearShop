@@ -39,7 +39,7 @@ namespace GearShop.WebMVC.Controllers
             if (service.CreateComment(model))
             {
                 TempData["SaveResult"] = "Your Comment was added!";
-                return RedirectToAction("Index", "Category");
+                return RedirectToAction("Details", "Gear", new { id = model.GearId });
             }
 
             ModelState.AddModelError("", "Comment was not created successfully.");

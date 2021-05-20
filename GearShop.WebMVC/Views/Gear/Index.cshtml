@@ -1,14 +1,17 @@
 ﻿@model IEnumerable<GearShop.Models.GearListItem>
 
 @{
-    ViewBag.Title = "Index";
+    ViewBag.Title = "Gear";
 }
 
 <h2>All Gear</h2>
 
-<p>
-    @Html.ActionLink("Create New", "Create")
-</p>
+@if (User.Identity.IsAuthenticated)
+{
+    <p>
+        <a href="@Url.Action("Create", "Gear", routeValues: null)" class="btn btn-primary btn-sm mb-5">Create new Gear</a>
+    </p>
+}
 <div class="row row-cols-1 row-cols-md-3">
     @foreach (var item in Model)
     {
@@ -24,7 +27,7 @@
                     <li class="list-group-item">Rating: @item.AverageRating/5</li>
                 </ul>
                 <div class="card-body d-flex flex-column">
-                    <a href="@Url.Action("Details", new { id = item.GearId })" class="card-link mt-auto">View This item</a>
+                    <a href="@Url.Action("Details", new { id = item.GearId })" class="card-link btn btn-sm btn-success mt-auto">View This item</a>
                     @if (User.Identity.IsAuthenticated)
                     {
                         <a href="@Url.Action("Edit", new { id = item.GearId })" class="card-link">Edit This Item</a>

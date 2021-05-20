@@ -23,25 +23,27 @@
                     <a class="nav-link" href="@Url.Action("Index", "Home")">Home <span class="sr-only">(current)</span></a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link" href="@Url.Action("Contact", "Home")">Contact Us</a>
+                    <a class="nav-link" href="@Url.Action("About", "Home")">About Us</a>
                 </li>
-                <li class="nav-item dropdown">
-                    <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                        Dropdown
-                    </a>
-                    <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-                        <a class="dropdown-item" href="#">Action</a>
-                        <a class="dropdown-item" href="#">Another action</a>
-                        <div class="dropdown-divider"></div>
-                        <a class="dropdown-item" href="#">Something else here</a>
-                    </div>
-                </li>
+                @if (User.Identity.IsAuthenticated)
+                {
+                    <li class="nav-item">
+                        <a class="nav-link" href="@Url.Action("Index", "Cart")">View Your Cart</a>
+                    </li>
+                }
             </ul>
+            <div class="btn-group btn-group-sm mr-auto" role="group" aria-label="...">
+                <a href="@Url.Action("IndexByCategoryType", "Category", new { categoryType = GearShop.Data.CategoryType.Climbing })" class="btn btn-sm btn-outline-light">Climbing</a>
+                <a href="@Url.Action("IndexByCategoryType", "Category", new { categoryType = GearShop.Data.CategoryType.Hiking })" class="btn btn-sm btn-outline-light">Hiking</a>
+                <a href="@Url.Action("IndexByCategoryType", "Category", new { categoryType = GearShop.Data.CategoryType.Camping })" class="btn btn-sm btn-outline-light">Camping</a>
+                <a href="@Url.Action("IndexByCategoryType", "Category", new { categoryType = GearShop.Data.CategoryType.Cycling })" class="btn btn-sm btn-outline-light">Cycling</a>
+                <a href="@Url.Action("IndexByCategoryType", "Category", new { categoryType = GearShop.Data.CategoryType.Running })" class="btn btn-sm btn-outline-light">Running</a>
+            </div>
             @using (Html.BeginForm("Index", "Home"))
             {
                 <form class="form-inline my-2 my-lg-0">
                     @Html.TextBox("name")
-                    <button class="btn btn-outline-success my-2 my-sm-0" type="submit" value="Index">Search</button>
+                    <button class="btn btn-outline-success my-2 my-sm-0 mr-5" type="submit" value="Index">Search</button>
                 </form>
             }
             <form class="form-inline my-2 my-lg-0">
@@ -83,7 +85,15 @@
         @RenderBody()
         <hr />
         <footer>
-            <p>&copy; @DateTime.Now.Year - Peter's Outdoor Gear Emporium Inc.</p>
+            <p style="color: white;">&copy; @DateTime.Now.Year - Peter's Outdoor Gear Emporium Inc.</p>
+            <ul>
+                <li class="nav-item">
+                    @Html.ActionLink("View your Comments", "Index", "Comment", null, new { @style = "color: white; text-decoration: underline;" })
+                </li>
+                <li class="nav-item">
+                    @Html.ActionLink("View your Replies", "Index", "Reply", null, new { @style = "color: white; text-decoration: underline;" })
+                </li>
+            </ul>
         </footer>
     </div>
 

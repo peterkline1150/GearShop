@@ -91,7 +91,8 @@ namespace GearShop.WebMVC.Controllers
                 Name = detail.Name,
                 Price = detail.Price,
                 NumAvailable = detail.NumAvailable,
-                CategoryId = detail.Category.CategoryId
+                CategoryId = detail.Category.CategoryId,
+                PictureUrl = detail.PictureUrl
             };
 
             return View(model);

@@ -39,7 +39,7 @@ namespace GearShop.WebMVC.Controllers
             if (service.CreateReply(model))
             {
                 TempData["SaveResult"] = "Reply was created!";
-                return RedirectToAction("Index");
+                return RedirectToAction("Details", "Comment", new { id = model.CommentId });
             }
 
             ModelState.AddModelError("", "Reply was not created.");

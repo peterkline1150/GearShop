@@ -1,44 +1,45 @@
 ﻿@model IEnumerable<GearShop.Models.Comment_Models.CommentListItem>
 
 @{
-    ViewBag.Title = "Index";
+    ViewBag.Title = "Your Comments";
 }
 
-<h2>Index</h2>
+<div class="jumbotron">
+    <div class="text-md-center">
+        <h5>Your Comments</h5>
+    </div>
+    <table class="table">
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.CommentTitle)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Rating)
+            </th>
+            <th>
+                <p>Item Commented on:</p>
+            </th>
+        </tr>
 
-<p>
-    @Html.ActionLink("Create New", "Create")
-</p>
-<table class="table">
-    <tr>
-        <th>
-            @Html.DisplayNameFor(model => model.CommentTitle)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.Rating)
-        </th>
-        <th>
-            <p>Item Commented on:</p>
-        </th>
-    </tr>
+        @foreach (var item in Model)
+        {
+            <tr>
+                <td>
+                    @Html.DisplayFor(modelItem => item.CommentTitle)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Rating)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Gear.Name)
+                </td>
+                <td>
+                    @Html.ActionLink("Edit", "Edit", new { id = item.CommentId }) |
+                    @Html.ActionLink("Details", "Details", new { id = item.CommentId }) |
+                    @Html.ActionLink("Delete", "Delete", new { id = item.CommentId })
+                </td>
+            </tr>
+        }
 
-@foreach (var item in Model) {
-    <tr>
-        <td>
-            @Html.DisplayFor(modelItem => item.CommentTitle)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.Rating)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.Gear.Name)
-        </td>
-        <td>
-            @Html.ActionLink("Edit", "Edit", new { id=item.CommentId }) |
-            @Html.ActionLink("Details", "Details", new { id=item.CommentId }) |
-            @Html.ActionLink("Delete", "Delete", new { id=item.CommentId })
-        </td>
-    </tr>
-}
-
-</table>
+    </table>
+</div>

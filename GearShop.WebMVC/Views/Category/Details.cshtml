@@ -1,5 +1,12 @@
 ﻿@model GearShop.Models.Category_Models.CategoryDetail
 
+<p>
+    @if (User.Identity.IsAuthenticated)
+    {
+    <a href="@Url.Action("Create", "Gear", routeValues: null)" class="btn btn-primary btn-sm mb-5">Create new Gear</a>
+    }
+</p>
+
 <div class="category_detail">
     <dl class="dl-horizontal">
         <dt>
