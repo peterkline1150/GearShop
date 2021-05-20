@@ -103,6 +103,23 @@ namespace GearShop.Services
 
                 foreach (var gear in model.GearInCart)
                 {
+                    var gearEntity = ctx.Gear.Find(gear.GearId);
+                    var gearToCompareTo = cartUpdateEntity.GearInCart.Single(e => e.GearId == gear.GearId);
+
+                    if (gearToCompareTo.AmountOfGearInCart > gear.AmountOfGearInCart)
+                    {
+                        gearEntity.NumAvailable += gearToCompareTo.AmountOfGearInCart - gear.AmountOfGearInCart;
+                    }
+                    else
+                    {
+                        if (gear.AmountOfGearInCart - gearToCompareTo.AmountOfGearInCart > gearEntity.NumAvailable)
+                        {
+                            return false;
+                        }
+
+                        gearEntity.NumAvailable -= gear.AmountOfGearInCart - gearToCompareTo.AmountOfGearInCart;
+                    }
+
                     if (gear.AmountOfGearInCart <= 0)
                     {
                         gearToRemoveFromCart.Add(gear);
@@ -138,6 +155,15 @@ namespace GearShop.Services
                 };
 
                 ctx.Carts.Remove(cartEntity);
+
+                foreach (var gear in ctx.GearInCarts)
+                {
+                    if (gear.UserId == _userId)
+                    {
+                        ctx.GearInCarts.Remove(gear);
+                    }
+                }
+
                 ctx.SaveChanges();
 
                 return model;

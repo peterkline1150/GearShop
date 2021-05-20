@@ -52,7 +52,7 @@ namespace GearShop.WebMVC.Controllers
                 return RedirectToAction("Index");
             }
 
-            ModelState.AddModelError("", "Cart could not be updated");
+            ModelState.AddModelError("", "You cannot add that much gear to your cart");
             return View(model);
         }
 
