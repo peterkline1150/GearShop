@@ -86,14 +86,17 @@
         <hr />
         <footer>
             <p style="color: white;">&copy; @DateTime.Now.Year - Peter's Outdoor Gear Emporium Inc.</p>
-            <ul>
-                <li class="nav-item">
-                    @Html.ActionLink("View your Comments", "Index", "Comment", null, new { @style = "color: white; text-decoration: underline;" })
-                </li>
-                <li class="nav-item">
-                    @Html.ActionLink("View your Replies", "Index", "Reply", null, new { @style = "color: white; text-decoration: underline;" })
-                </li>
-            </ul>
+            @if (User.Identity.IsAuthenticated)
+            {
+                <ul>
+                    <li class="nav-item list-unstyled">
+                        @Html.ActionLink("View your Comments", "Index", "Comment", null, new { @style = "color: white; text-decoration: underline;" })
+                    </li>
+                    <li class="nav-item list-unstyled">
+                        @Html.ActionLink("View your Replies", "Index", "Reply", null, new { @style = "color: white; text-decoration: underline;" })
+                    </li>
+                </ul>
+            }
         </footer>
     </div>
 
