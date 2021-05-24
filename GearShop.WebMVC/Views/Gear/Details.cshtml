@@ -54,89 +54,26 @@
                         <p class="card-subtitle mb-2 text-muted">User Rating: @Model.Comments[i].Rating/5</p>
                         <p>@Model.Comments[i].CommentText</p>
                         <p class="card-text"><small class="text-muted">Posted by: @Model.Comments[i].UserId</small></p>
-                        @Html.ActionLink("View Replies", "Details", "Comment", new { id = Model.Comments[i].CommentId }, null)
+                        @if (User.Identity.IsAuthenticated)
+                        {
+                            @Html.ActionLink("View Replies", "Details", "Comment", new { id = Model.Comments[i].CommentId }, null)
+                        }
                     </div>
                 </div>
         }
         <br />
         <p class="col-md-12">
-            <a href="@Url.Action("Create", "Comment")" class="btn btn-primary">Leave a review!</a>
-            @if (User.Identity.IsAuthenticated)
+            @if(User.Identity.IsAuthenticated)
+            {
+                <a href="@Url.Action("Create", "Comment")" class="btn btn-primary">Leave a review!</a>
+            }
+            @if (User.Identity.Name == "admin@pjk120.com")
             {
                 @Html.ActionLink("Edit this piece of Gear", "Edit", new { id = Model.GearId });
                 <span> | </span>
-                @Html.ActionLink("Back to Categories", "Index", "Category");
             }
+
+            @Html.ActionLink("Back to Categories", "Index", "Category");
         </p>
     </div>
 </div>
-
-
-
-
-@*<script src="~/Scripts/jquery-3.4.1.min.js"></script>*@
-<!--<script>
-    document.getElementById('addToCart').addEventListener('click', addToCart)
-
-    function addToCart() {
-        const quantity = $('#AmountOfGearInCart option:selected').val();
-        const datapacket = {
-            GearId: @Html.DisplayFor(model => model.GearId),
-            GearNameInCart: '@Html.DisplayFor(model => model.Name)',
-            CostOfGear: @Html.DisplayFor(model => model.Price),
-            AmountOfGearInCart: quantity
-        }-->
-@*$.ajax({
-        type: 'POST',
-        url: 'https://localhost:44345'+'@Url.Action("AddGearToCart", "Cart")',
-        dataType: 'json',
-        data: datapacket,
-        success: function (result) {
-            console.log('Success!')
-        },
-        error: function (result) {
-            console.log(result.responseText)
-        }
-    });*@
-<!--// Example POST method implementation:
-async function postData(url, data) {
-    // Default options are marked with *
-    const response = await fetch(url, {
-        method: 'POST', // *GET, POST, PUT, DELETE, etc.
-        mode: 'cors', // no-cors, *cors, same-origin
-        cache: 'no-cache', // *default, no-cache, reload, force-cache, only-if-cached
-        credentials: 'same-origin', // include, *same-origin, omit
-        headers: {
-            'Content-Type': 'application/json'
-            // 'Content-Type': 'application/x-www-form-urlencoded',
-        },
-        redirect: 'follow', // manual, *follow, error
-        referrerPolicy: 'no-referrer', // no-referrer, *no-referrer-when-downgrade, origin, origin-when-cross-origin, same-origin, strict-origin, strict-origin-when-cross-origin, unsafe-url
-        body: JSON.stringify(data) // body data type must match "Content-Type" header
-    });
-    return response.json(); // parses JSON response into native JavaScript objects
-}
-
-postData('https://localhost:44345'+'@**@Url.Action("CreateIndividualGearItem", "Cart")', datapacket).then(res => console.log(res))-->
-@*$.ajax({
-        type: "POST",
-        url: "/Cart/CreateIndividualGearItem",
-        data: JSON.stringify(datapacket),
-        contentType: "application/json; charset=utf-8",
-        dataType: "json",
-        success: function (response) {
-            if (response != null) {
-                alert("Success!");
-            } else {
-                alert("Something went wrong");
-            }
-        },
-        failure: function (response) {
-            alert(response.responseText);
-        },
-        error: function (response) {
-            alert(response.responseText);
-        }
-    }); *@
-<!--}
-</script>-->

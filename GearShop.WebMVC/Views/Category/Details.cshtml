@@ -1,7 +1,7 @@
 ﻿@model GearShop.Models.Category_Models.CategoryDetail
 
 <p>
-    @if (User.Identity.IsAuthenticated)
+    @if (User.Identity.Name == "admin@pjk120.com")
     {
     <a href="@Url.Action("Create", "Gear", routeValues: null)" class="btn btn-primary btn-sm mb-5">Create new Gear</a>
     }
@@ -42,7 +42,7 @@
 <br />
 
 <p>
-    @if (User.Identity.IsAuthenticated)
+    @if (User.Identity.Name == "admin@pjk120.com")
     {
         <a href="@Url.Action("Edit", new { id = Model.CategoryId})" class="btn btn-primary mr-3">Edit this Category</a>
     }

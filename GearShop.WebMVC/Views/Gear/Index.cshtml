@@ -6,7 +6,7 @@
 
 <h2>All Gear</h2>
 
-@if (User.Identity.IsAuthenticated)
+@if (User.Identity.Name == "admin@pjk120.com")
 {
     <p>
         <a href="@Url.Action("Create", "Gear", routeValues: null)" class="btn btn-primary btn-sm mb-5">Create new Gear</a>
@@ -28,7 +28,7 @@
                 </ul>
                 <div class="card-body d-flex flex-column">
                     <a href="@Url.Action("Details", new { id = item.GearId })" class="card-link btn btn-sm btn-success mt-auto">View This item</a>
-                    @if (User.Identity.IsAuthenticated)
+                    @if (User.Identity.Name == "admin@pjk120.com")
                     {
                         <a href="@Url.Action("Edit", new { id = item.GearId })" class="card-link">Edit This Item</a>
                         <a href="@Url.Action("Delete", new { id = item.GearId })" class="card-link">Delete This Item</a>
