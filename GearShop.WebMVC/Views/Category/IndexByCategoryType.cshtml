@@ -7,7 +7,7 @@
 <h2>Click on a Category to View Specific Gear</h2>
 
 <p>
-    @if (User.Identity.IsAuthenticated)
+    @if (User.Identity.Name == "admin@pjk120.com")
     {
         <a href="@Url.Action("Create", "Category", routeValues: null)" class="btn btn-primary btn-sm mb-5">Create a new category</a>
     }
@@ -18,7 +18,7 @@
         <div class="card-body">
             <h5 class="card-title">@item.CategoryName</h5>
             <a href="@Url.Action("Details", new { id = item.CategoryId })" class="card-link">View Gear in this Category</a>
-            @if (User.Identity.IsAuthenticated)
+            @if (User.Identity.Name == "admin@pjk120.com")
             {
                 <a href="@Url.Action("Edit", new { id = item.CategoryId })" class="card-link">Edit</a>
                 <a href="@Url.Action("Delete", new { id = item.CategoryId })" class="card-link">Delete</a>
