@@ -12,3 +12,9 @@ The third layer is the services layer. This is the layer that speaks between the
 
 The final layer is the WebMVC layer. This is the frontend of the website, and includes the controllers and the views. These controllers interact with the views in the WebMVC layer, as well as the services in the services layer, to allow the user control over the data. The controllers pass information to the service layer, and they also take information from the service layer and display it to the user. The views in this layer allow frontend functionality, and make it easy for the user to see and understand what they are doing and what is going on.
 
+All functionality for this WebMVC is included within the pages themselves. I used many different instances of TempData to allow different controllers to communicate with each other. For these reasons, if you start typing in specific URLs, things might break. However, if you navigate around the site with the buttons and views that I have created, everything should work perfectly (or, at least as perfectly as I could get it).
+
+# Planning Documents
+
+Below is the link to my planning documents for the GearShop Project. I created a Trello Board and a Miro Board which are both linked within this Google Doc.
+https://docs.google.com/document/d/1t_Ev4wTmvHp5TANSgWivEnDxlcN9o_X-UMVXhwJnBg0/edit?usp=sharing
