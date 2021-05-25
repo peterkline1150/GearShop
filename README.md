@@ -17,4 +17,5 @@ All functionality for this WebMVC is included within the pages themselves. I use
 # Planning Documents
 
 Below is the link to my planning documents for the GearShop Project. I created a Trello Board and a Miro Board which are both linked within this Google Doc.
+
 https://docs.google.com/document/d/1t_Ev4wTmvHp5TANSgWivEnDxlcN9o_X-UMVXhwJnBg0/edit?usp=sharing
