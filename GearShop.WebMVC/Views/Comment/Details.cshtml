@@ -30,6 +30,6 @@
 
 <p>
     <a href="@Url.Action("Create", "Reply")" class="btn btn-primary">Reply to this Comment</a>
-    @Html.ActionLink("Edit", "Edit", new { id = Model.CommentId }) |
-    @Html.ActionLink("Back to List", "Index")
+    <a href="@Url.Action("Details", "Gear", new { id = Model.Gear.GearId })" class="btn-sm btn-secondary ml-3">Return to Item</a>
+    <a href="@Url.Action("Index")" class="btn-sm btn-danger ml-3">View all of your Comments</a>
 </p>
